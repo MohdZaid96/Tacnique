@@ -14,23 +14,23 @@ const Users = () => {
     
   }
   const handleEdit=async()=>{
-    try {
-      const data= await axios.get("https://jsonplaceholder.typicode.com/users");
-      setUsers(data.data);
-      console.log(users)
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   const data= await axios.get("https://jsonplaceholder.typicode.com/users");
+    //   setUsers(data.data);
+    //   console.log(users)
+    // } catch (error) {
+    //   console.log(error);
+    // }
     
   }
   const handleDelete=async()=>{
-    try {
-      const data= await axios.get("https://jsonplaceholder.typicode.com/users");
-      setUsers(data.data);
-      console.log(users)
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   const data= await axios.get("https://jsonplaceholder.typicode.com/users");
+    //   setUsers(data.data);
+    //   console.log(users)
+    // } catch (error) {
+    //   console.log(error);
+    // }
     
   }
 
