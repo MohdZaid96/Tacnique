@@ -19,6 +19,14 @@ const Users = () => {
     try {
       const data = await axios.get("https://jsonplaceholder.typicode.com/users");
       setUsers(data.data);
+      const setpage=localStorage.getItem("setpage");
+      setpage(()=>{
+        if((users.length/10)>1){
+          return users.length/10;
+        }else{
+          return 1;
+        }
+      })
     } catch (error) {
       console.log(error);
     }
