@@ -26,16 +26,12 @@ const ModalWin = (props) => {
         email,
         company: { name: company },
       };
-      await axios.patch(
-        `https://jsonplaceholder.typicode.com/users/${props?.edit}`,
-        {
-          formData,
-        }
-      );
-      alert("User edited");
+      await axios.patch(`https://jsonplaceholder.typicode.com/users/${props?.edit}`,formData);
+      alert("User Updated");
       props?.onHide();
       props?.setRender(true);
     } catch (error) {
+        alert("Updation Failed");
       console.log(error);
     }
   };
@@ -47,10 +43,11 @@ const ModalWin = (props) => {
         email,
         company: { name: company },
       };
-      await axios.post(`https://jsonplaceholder.typicode.com/users`);
+      await axios.post(`https://jsonplaceholder.typicode.com/users`,formData);
       alert("User Added");
       props?.onHide();
     } catch (error) {
+        alert("User Storation Failed");
       console.log(error);
     }
   };

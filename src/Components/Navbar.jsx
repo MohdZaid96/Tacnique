@@ -17,7 +17,7 @@ const Navbar = () => {
          
           <img style={{width:"100px"}}  src={logo} alt="Logo" />
         </a>
-        <div className="d-flex">
+        <div className="d-flex justify-content-end">
           <button type="button" class="btn btn-primary" onClick={handleAdd}>
             Add User
           </button>
