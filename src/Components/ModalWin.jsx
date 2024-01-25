@@ -70,7 +70,7 @@ const ModalWin = (props) => {
        centered
      >
        <Modal.Header>
-         <Modal.Title id='contained-modal-title-vcenter'>{props?.addFlag?"Add User":"Update User"}</Modal.Title>
+         <Modal.Title id='contained-modal-title-vcenter'>{props?.flag?"Add User":"Update User"}</Modal.Title>
        </Modal.Header>
        <Modal.Body>
        <div>
