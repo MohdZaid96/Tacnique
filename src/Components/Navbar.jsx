@@ -12,12 +12,12 @@ const Navbar = () => {
   };
   return (
     <nav className="navbar bg-body-tertiary">
-      <div className="container-fluid">
+      <div className="container-fluid d-flex justify-content-between">
         <a className="navbar-brand">
          
           <img style={{width:"100px"}}  src={logo} alt="Logo" />
         </a>
-        <div className="d-flex justify-content-end">
+        <div>
           <button type="button" class="btn btn-primary" onClick={handleAdd}>
             Add User
           </button>

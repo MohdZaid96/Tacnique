@@ -6,6 +6,8 @@ const ModalWin = (props) => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [company, setCompany] = useState();
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  
 
   useEffect(() => {
     if (!props?.flag) {
@@ -20,6 +22,7 @@ const ModalWin = (props) => {
   }, [props?.users, props?.edit]);
 
   const editUser = async () => {
+    if(name.length>2 && emailRegex.test(email) && company.length>3){
     try {
       const formData = {
         name,
@@ -34,9 +37,14 @@ const ModalWin = (props) => {
         alert("Updation Failed");
       console.log(error);
     }
+    }else{
+        alert("Please Provide a Valid input || Valid inputs are: 1. Name more than 2 words && 2. Valid Email && 3. Country more than 3 words ")
+
+    }
   };
 
   const addUser = async () => {
+     if(name?.length>2 && emailRegex.test(email) && company?.length>3){
     try {
       const formData = {
         name,
@@ -47,112 +55,51 @@ const ModalWin = (props) => {
       alert("User Added");
       props?.onHide();
     } catch (error) {
-        alert("User Storation Failed");
+        alert("User Not Saved");
       console.log(error);
     }
+    }else{
+        alert("Please Provide a Valid input || Valid inputs are: 1. Name more than 2 words && 2. Valid Email && 3. Country more than 3 words ")
+    }
   };
-  {
-    /* <label htmlFor="formGroupExampleInput2" className="form-label">Email</label>
-                    <input type="text" className="form-control" value={props?.flag?"":email} onChange={(e) => setEmail(e.target.value)} />
-               
-               
-                     <label htmlFor="formGroupExampleInput2" className="form-label">
-              Company
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              value={props?.flag ? "" : company}
-              onChange={(e) => setCompany(e.target.value)}
-            />
-               
-               
-                    */
-  }
-  return (
-    <Modal
-      {...props}
-      size="md"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header>
-        <Modal.Title id="contained-modal-title-vcenter">
-          {props?.addFlag ? "Add User" : "Update User"}
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <form class="row g-3 needs-validation" novalidate>
-          <div className="mb-3">
-            <label htmlFor="validationServer01" className="form-label">
-              Name
-            </label>
-            <input
-              type="text"
-              className="form-control is-valid"
-              id="validationServer01"
-              value={props?.flag ? "" : name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-            <div className="valid-feedback">Looks good!</div>
-          </div>
-          <div className="mb-3">
-            <div>
-              <label htmlFor="validationServerUsername" className="form-label">
-                Email
-              </label>
-              <div className="input-group has-validation">
-                <span className="input-group-text" id="inputGroupPrepend3">
-                  @
-                </span>
-                <input
-                  type="text"
-                  className="form-control is-invalid"
-                  id="validationServerUsername"
-                  aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"
-                  value={props?.flag ? "" : email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <div
-                  id="validationServerUsernameFeedback"
-                  className="invalid-feedback"
-                >
-                  Please choose a username.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="validationServer01" className="form-label">
-              Company
-            </label>
-            <input
-              type="text"
-              className="form-control is-valid"
-              id="validationServer01"
-              value={props?.flag ? "" : company}
-              onChange={(e) => setCompany(e.target.value)}
-              required
-            />
-            <div className="valid-feedback">Looks good!</div>
-          </div>
-          <div className="mb-3 d-flex justify-content-end">
-            <button type="button" class="btn btn-primary" onClick={()=>{
+   return (
+     <Modal
+       {...props}
+       size="md"
+       aria-labelledby="contained-modal-title-vcenter"
+       centered
+     >
+       <Modal.Header>
+         <Modal.Title id='contained-modal-title-vcenter'>{props?.addFlag?"Add User":"Update User"}</Modal.Title>
+       </Modal.Header>
+       <Modal.Body>
+       <div>
+           <div className="mb-3">
+             <label htmlFor="formGroupExampleInput" className="form-label">Name</label>
+             <input type="text" className="form-control" value={props?.flag?"":name} onChange={(e) => setName(e.target.value)} required/>
+           </div>
+           <div className="mb-3">
+             <label htmlFor="formGroupExampleInput2" className="form-label">Email</label>
+             <input type="text" className="form-control" value={props?.flag?"":email} onChange={(e) => setEmail(e.target.value)} required />
+           </div>
+           <div className="mb-3">
+             <label htmlFor="formGroupExampleInput2" className="form-label">Company</label>
+             <input type="text" className="form-control" value={props?.flag?"":company} onChange={(e) => setCompany(e.target.value)} required/>
+           </div>
+           <div className="mb-3 d-flex justify-content-end">
+             <button type="button" class="btn btn-primary" onClick={()=>{
                 if(props?.flag){
                     addUser();
                 }else{
                     editUser();
                 }
-            }}>
-              {props?.flag ? "Add User" : "Update User"}
-            </button>
-          </div>
-        </form>
-      </Modal.Body>
-    </Modal>
-  );
-};
+             }}>{props?.flag?"Add User":"Update User"}</button>
+           </div>
+        </div>
+ 
+       </Modal.Body>
+     </Modal>
+   )
+}
 
-export default ModalWin;
+export default ModalWin
