@@ -76,15 +76,15 @@ const ModalWin = (props) => {
        <div>
            <div className="mb-3">
              <label htmlFor="formGroupExampleInput" className="form-label">Name</label>
-             <input type="text" className="form-control" value={props?.flag?"":name} onChange={(e) => setName(e.target.value)} required/>
+             <input type="text" className="form-control" defaultValue={props?.flag?"":name} onChange={(e) => setName(e.target.value)} required/>
            </div>
            <div className="mb-3">
              <label htmlFor="formGroupExampleInput2" className="form-label">Email</label>
-             <input type="text" className="form-control" value={props?.flag?"":email} onChange={(e) => setEmail(e.target.value)} required />
+             <input type="text" className="form-control" defaultValue={props?.flag?"":email} onChange={(e) => setEmail(e.target.value)} required />
            </div>
            <div className="mb-3">
              <label htmlFor="formGroupExampleInput2" className="form-label">Company</label>
-             <input type="text" className="form-control" value={props?.flag?"":company} onChange={(e) => setCompany(e.target.value)} required/>
+             <input type="text" className="form-control" defaultValue={props?.flag?"":company} onChange={(e) => setCompany(e.target.value)} required/>
            </div>
            <div className="mb-3 d-flex justify-content-end">
              <button type="button" class="btn btn-primary" onClick={()=>{
