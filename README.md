@@ -1,70 +1,62 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# User Management Dashboard
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+The User Management Dashboard is a web application designed for user management operations such as viewing, adding, editing, and deleting user details. It interacts with a mock backend API, specifically using the JSONPlaceholder API for demonstration and testing purposes.
 
-### `npm start`
+## User Interface
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The dashboard provides a user-friendly interface with the following features:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **User List:** Displays a list of users with details including ID, First Name, Last Name, Email, and Department.
 
-### `npm test`
+2. **Action Buttons:**
+   - "Add": Allows users to add a new user.
+   - "Edit": Enables users to edit existing user details.
+   - "Delete": Allows users to delete a selected user.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. **User Form:**
+   - Provides a form to input details for a new user or edit existing user details.
 
-### `npm run build`
+## Backend Interaction
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The application interacts with the JSONPlaceholder API using the '/users' endpoint for fetching and manipulating user data.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+API Endpoint: [JSONPlaceholder '/users'](https://jsonplaceholder.typicode.com/users)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Functionality
 
-### `npm run eject`
+### View Users
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Displays a list of users by fetching data from the '/users' endpoint.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Add User
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Allows users to add a new user by posting to the '/users' endpoint.
+- Note: JSONPlaceholder simulates a successful response for demonstration purposes.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Edit User
 
-## Learn More
+- Enables users to edit details of an existing user.
+- Involves fetching the current data for a user, allowing edits, and then updating the data via the API.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Delete User
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Allows users to delete a selected user by sending a delete request to the API.
 
-### Code Splitting
+### Error Handling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Handles scenarios where the API request might fail and displays an error message to the user in such cases.
 
-### Analyzing the Bundle Size
+## Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Start the application using `npm start`.
 
-### Making a Progressive Web App
+## Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React
+- React-Router-Dom
+- Axios
