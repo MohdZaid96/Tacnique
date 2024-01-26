@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import ModalWin from "./ModalWin";
+import Navbar from "./Navbar";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -21,7 +22,7 @@ const Users = () => {
       setUsers(data.data);
       const setpage=localStorage.getItem("setpage");
       setpage(()=>{
-        if((users.length/10)>1){
+        if((users.length/5)>1){
           return users.length/10;
         }else{
           return 1;
@@ -51,7 +52,8 @@ const Users = () => {
     setEdit(id);
   }
 
-  return (
+  return (<>
+    <Navbar setUsers={setUsers} users={users}/>    
     <div>
       <table className="table table-hover">
         <thead>
@@ -90,9 +92,11 @@ const Users = () => {
         users={users}
         edit={edit}
         setRender={setRender}
+        setUsers={setUsers}
         flag={false}
       />
     </div>
+    </>
   );
 };
 

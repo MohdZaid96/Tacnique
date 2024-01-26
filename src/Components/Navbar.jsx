@@ -3,7 +3,7 @@ import logo from "../logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import ModalWin from "./ModalWin";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const navigate = useNavigate();
   const [editBlock, setEditBlock] = useState(false);
 
@@ -26,6 +26,8 @@ const Navbar = () => {
       <ModalWin
         show={editBlock}
         onHide={() => setEditBlock(false)}
+        setUsers={props?.setUsers}
+        users={props?.users}
         flag={true}
       />
     </nav>

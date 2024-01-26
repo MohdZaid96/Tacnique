@@ -51,8 +51,11 @@ const ModalWin = (props) => {
         email,
         company: { name: company },
       };
-      await axios.post(`https://jsonplaceholder.typicode.com/users`,formData);
+      const res=await axios.post(`https://jsonplaceholder.typicode.com/users`,formData);
+      console.log(res);
       alert("User Added");
+      props?.setUsers([...props?.users, res.data]);
+      console.log(props?.users);
       props?.onHide();
     } catch (error) {
         alert("User Not Saved");

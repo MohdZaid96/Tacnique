@@ -25,7 +25,6 @@ function App() {
   };
   return (
     <div className="App">
-      <Navbar />
       <AllRoutes />
       <div className="mb-4 d-flex justify-content-center">      
         <nav aria-label="Page navigation example">
