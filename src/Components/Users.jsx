@@ -36,8 +36,14 @@ const Users = () => {
   const deleteUser = async (id) => {
     try {
       await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+      setUsers(prevUsers => {
+        const updatedUsers = prevUsers.filter(user => user.id !== id);
+        return updatedUsers.map((user, index) => ({
+          ...user,
+          id: index + 1,
+        }));
+      });
       alert("User Deleted");
-      navigate("/");
     } catch (error) {
       console.log(error);
     }
