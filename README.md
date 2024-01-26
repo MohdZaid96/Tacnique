@@ -9,7 +9,7 @@ The User Management Dashboard is a web application designed for user management 
 
 The dashboard provides a user-friendly interface with the following features:
 
-1. **User List:** Displays a list of users with details including ID, First Name, Last Name, Email, and Department.
+1. **User List:** Displays a list of users with details including ID, First Name, Last Name, Email, and Company.
 
 2. **Action Buttons:**
    - "Add": Allows users to add a new user.
