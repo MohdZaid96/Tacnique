@@ -22,7 +22,7 @@ const Users = () => {
   const getUsers = async () => {
     try {
       const data = await axios.get("https://jsonplaceholder.typicode.com/users");
-      setUsers(data.data.filter(user => user.id >= (page - 1) * 10 && user.id <= page * 10));
+      setUsers(data.data.filter(user => user.id > (page - 1) * 10 && user.id <= page * 10));
      } catch (error) {
       console.log(error);
     }
@@ -69,7 +69,7 @@ const Users = () => {
           </tr>
         </thead>
         <tbody>
-          {users?.filter(user => user.id >= (page - 1) * 10 && user.id <= page * 10).map((user) => (
+          {users?.filter(user => user.id > (page - 1) * 10 && user.id <= page * 10).map((user) => (
             <tr key={user.id}>
               <th scope="row">{user.id}</th>
               <td>{user.name.split(" ")[0]}</td>
