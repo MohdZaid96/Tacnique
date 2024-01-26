@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Modal from 'react-bootstrap/Modal';
 import ModalWin from "./ModalWin";
 import Navbar from "./Navbar";
+import Pagination from "./Pagination";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -11,6 +12,8 @@ const Users = () => {
   const navigate = useNavigate();
   const [editBlock, setEditBlock] = useState(false);
   const [edit, setEdit] = useState()
+  const [page,setPage]=useState(1);
+  
 
   useEffect(() => {
     if (render) setRender(false)
@@ -19,16 +22,8 @@ const Users = () => {
   const getUsers = async () => {
     try {
       const data = await axios.get("https://jsonplaceholder.typicode.com/users");
-      setUsers(data.data);
-      const setpage=localStorage.getItem("setpage");
-      setpage(()=>{
-        if((users.length/5)>1){
-          return users.length/10;
-        }else{
-          return 1;
-        }
-      })
-    } catch (error) {
+      setUsers(data.data.filter(user => user.id >= (page - 1) * 10 && user.id <= page * 10));
+     } catch (error) {
       console.log(error);
     }
   }
@@ -74,7 +69,7 @@ const Users = () => {
           </tr>
         </thead>
         <tbody>
-          {users?.map((user) => (
+          {users?.filter(user => user.id >= (page - 1) * 10 && user.id <= page * 10).map((user) => (
             <tr key={user.id}>
               <th scope="row">{user.id}</th>
               <td>{user.name.split(" ")[0]}</td>
@@ -102,6 +97,10 @@ const Users = () => {
         flag={false}
       />
     </div>
+    <Pagination
+      page={page}
+      setPage={setPage}
+    />
     </>
   );
 };
