@@ -25,14 +25,16 @@ const ModalWin = (props) => {
     if(name.length>2 && emailRegex.test(email) && company.length>3){
     try {
       const formData = {
+        id:props?.edit,
         name,
         email,
         company: { name: company },
       };
-      await axios.patch(`https://jsonplaceholder.typicode.com/users/${props?.edit}`,formData);
+      const res=await axios.patch(`https://jsonplaceholder.typicode.com/users/${props?.edit}`,formData);
       alert("User Updated");
       props?.onHide();
-      props?.setRender(true);
+      props?.setUsers(prevUsers => prevUsers.map(user => (user.id === props?.edit ? formData : user)));
+
     } catch (error) {
         alert("Updation Failed");
       console.log(error);
