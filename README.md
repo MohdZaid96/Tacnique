@@ -60,3 +60,5 @@ API Endpoint: [JSONPlaceholder '/users'](https://jsonplaceholder.typicode.com/us
 - React
 - React-Router-Dom
 - Axios
+- Bootstrap 5
+- react-bootstrap
