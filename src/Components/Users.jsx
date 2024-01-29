@@ -6,6 +6,9 @@ import ModalWin from "./ModalWin";
 import Navbar from "./Navbar";
 import Pagination from "./Pagination";
 
+
+
+
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [render, setRender] = useState(false);
@@ -21,7 +24,7 @@ const Users = () => {
 
   const getUsers = async () => {
     try {
-      const data = await axios.get("https://jsonplaceholder.typicode.com/users");
+      const data = await axios.get(`${process.env.REACT_APP_API_BASE_URL}`);
       setUsers(data.data.filter(user => user.id > (page - 1) * 10 && user.id <= page * 10));
      } catch (error) {
       console.log(error);
@@ -30,7 +33,7 @@ const Users = () => {
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/${id}`);
       setUsers(prevUsers => {
         const updatedUsers = prevUsers.filter(user => user.id !== id);
         return updatedUsers.map((user, index) => ({

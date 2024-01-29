@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 
+
 const ModalWin = (props) => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
@@ -30,7 +31,7 @@ const ModalWin = (props) => {
         email,
         company: { name: company },
       };
-      const res=await axios.patch(`https://jsonplaceholder.typicode.com/users/${props?.edit}`,formData);
+      const res=await axios.patch(`${process.env.REACT_APP_API_BASE_URL}/${props?.edit}`,formData);
       alert("User Updated");
       props?.onHide();
       props?.setUsers(prevUsers => prevUsers.map(user => (user.id === props?.edit ? formData : user)));
@@ -53,7 +54,7 @@ const ModalWin = (props) => {
         email,
         company: { name: company },
       };
-      const res=await axios.post(`https://jsonplaceholder.typicode.com/users`,formData);
+      const res=await axios.post(`${process.env.REACT_APP_API_BASE_URL}`,formData);
       console.log(res);
       alert("User Added");
       props?.setUsers([...props?.users, res.data]);
